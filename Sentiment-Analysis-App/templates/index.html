@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Sentiment Analyzer</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🤖 AI Sentiment Analyzer</h1>
+<p class="subtitle">Analyze the emotion behind your text</p>
+
+<form method="POST">
+
+<textarea name="text" placeholder="Type your sentence here..."></textarea>
+
+<button type="submit">Analyze Sentiment</button>
+
+</form>
+
+{% if sentiment %}
+
+<div class="result">
+
+<h3>Analysis Result</h3>
+
+{% if "Positive" in sentiment %}
+
+<div class="badge positive">😊 {{ sentiment }}</div>
+
+{% elif "Negative" in sentiment %}
+
+<div class="badge negative">😡 {{ sentiment }}</div>
+
+{% else %}
+
+<div class="badge neutral">😐 {{ sentiment }}</div>
+
+{% endif %}
+
+<div class="score">
+Polarity Score: {{ polarity }}
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
